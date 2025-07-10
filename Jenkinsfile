@@ -30,7 +30,7 @@ pipeline {
                 sh 'ansible -i inventory.ini nginx_install.yml webserver -m ping '
             }
         }
-        ansible --version
+
         stage('Deploy Nginx') {
             steps {
                 // Exécuter le playbook Ansible pour installer Nginx
