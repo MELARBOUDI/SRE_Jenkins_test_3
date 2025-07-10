@@ -17,14 +17,6 @@ pipeline {
              }
         }
 
-        stage('Install Ansible') {
-            steps {
-                // Installer Ansible sur l'agent Jenkins (Ubuntu)
-                sh 'sudo apt-get update'
-                sh 'sudo apt-get install -y ansible'
-            }
-        }
-
         stage('Deploy Nginx') {
             steps {
                 // Exécuter le playbook Ansible pour installer Nginx
