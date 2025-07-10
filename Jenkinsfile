@@ -27,7 +27,7 @@ pipeline {
         stage('Test Ping') {
             steps {
                 // Exécuter le playbook Ansible pour installer Nginx
-                sh 'ansible -i inventory.ini nginx_install.yml webserver -m ping '
+                sh 'ansible -u root -i inventory.ini webserver -m ping '
             }
         }
 
