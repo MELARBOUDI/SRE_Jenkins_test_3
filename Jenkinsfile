@@ -20,7 +20,7 @@ pipeline {
         stage('Deploy Nginx') {
             steps {
                 // Exécuter le playbook Ansible pour installer Nginx
-                sh 'ansible-playbook -i inventory nginx_install.yml'
+                sh 'ansible-playbook -i inventory.ini nginx_install.yml'
             }
         }
     }
