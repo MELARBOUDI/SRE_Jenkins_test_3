@@ -2,11 +2,19 @@ pipeline {
     agent any
 
     stages {
-        stage('Checkout') {
+
+        stage('Clean Workspace') {
             steps {
-                // Cloner le dépôt Git contenant la configuration Ansible et les fichiers nécessaires
-                git 'https://github.com/MELARBOUDI/SRE_Jenkins_test_3.git'
+                script {
+                    deleteDir()
+                }
             }
+        }
+
+        stage('Checkout) {
+            steps {
+                checkout([$class: 'GitSCM', branches: [[name: '*/main']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'b066c20d-d98b-45e6-94fb-3c0b17ab9616', url: 'https://github.com/MELARBOUDI/SRE_Jenkins_test_3.git']]])
+             }
         }
 
         stage('Install Ansible') {
