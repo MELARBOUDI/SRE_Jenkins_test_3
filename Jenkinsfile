@@ -17,6 +17,20 @@ pipeline {
              }
         }
 
+        stage('Version ansible') {
+            steps {
+                // Exécuter le playbook Ansible pour installer Nginx
+                sh 'ansible --version'
+            }
+        }
+
+        stage('Test Ping') {
+            steps {
+                // Exécuter le playbook Ansible pour installer Nginx
+                sh 'ansible -i inventory.ini nginx_install.yml webserver -m ping '
+            }
+        }
+        ansible --version
         stage('Deploy Nginx') {
             steps {
                 // Exécuter le playbook Ansible pour installer Nginx
